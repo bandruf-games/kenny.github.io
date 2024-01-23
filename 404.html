@@ -1,6 +1,11 @@
 <title>ubg98 - HTML5 Unblocked Games</title>
 <body>
   <script>
-    window.location="https://html5.games235.com/";
+  	let fullPath= window.location.href;
+  	if (fullPath.indexOf("-unblocked.html")> 0) {
+  		fullPath= fullPath.replace("-unblocked.html", "-unblockedz.html");
+  		window.location= fullPath;
+  	}
+    // window.location="https://html5.games235.com/";
   </script>
 </body>
