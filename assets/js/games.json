@@ -1,0 +1,21 @@
+{
+  "games": [
+    {
+        "title": "Test",
+        "site": "ubg98.github.io",
+        "link": "/test.html"
+    }, {
+        "title": "Test2",
+        "site": "ubg89.github.io",
+        "link": "/test2.html"
+    }, {
+        "title": "Test3",
+        "site": "ubg44.github.io",
+        "link": "/test3.html"
+    }, {
+        "title": "Test4",
+        "site": "ubg17.github.io",
+        "link": "/test4.html"
+    }
+  ]
+}
