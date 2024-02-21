@@ -14,7 +14,7 @@ DoSearch= function(searchQuery) {
         let site= item?.["site"]?? "";
         let link= item?.["link"]?? "";
         for (i=0; i< searchQuery.length; i++) {
-           if (title.indexOf(searchQuery[i])< 0) {
+           if (title.toLowerCase().indexOf(searchQuery[i])< 0) {
                 match= false;
                break;
            }
@@ -38,7 +38,7 @@ SearchQueryChange= function() {
     if (searchQuery!= $("#searchInput").val()) {
         searchQuery= $("#searchInput").val();
         if (searchQuery!= "") {
-            DoSearch(searchQuery);    
+            DoSearch(searchQuery.toLowerCase());    
         }        
     }    
 }
