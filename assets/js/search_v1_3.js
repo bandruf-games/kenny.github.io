@@ -7,7 +7,7 @@ DoSearch= function(searchQuery) {
     let cnt= 0;
     for (i= 0; i<= 25; i++) {
         $("#menuSearch").children("a").eq(1).remove();
-    }
+    }    
     GAMEs.forEach((item)=> {
         let match= true;
         let pos= 0;
@@ -23,7 +23,10 @@ DoSearch= function(searchQuery) {
                pos= newPos+ 1;
            }
         }
-        if (match && cnt<= 10) {
+        if (searchQuery== "") {
+            match= false;
+        }
+        if (match && cnt< 15) {
             cnt++;
             found= true;
             let newSubMenu= `<a class="dropdown-item" href="https://${site}${link}">${title}</a>`;
@@ -31,7 +34,10 @@ DoSearch= function(searchQuery) {
         }        
     });
     // console.log(searchQuery);
-    if (!found) {
+    if (searchQuery== "") {
+        let EmptySubMenu = "<a class=\"dropdown-item\" href=\"#\">Oops!</a>";
+        $('#menuSearch').append(EmptySubMenu);
+    } else if (!found) {
         let NotFoundSubMenu = "<a class=\"dropdown-item\" href=\"#\">Not Found!</a>";
         $('#menuSearch').append(NotFoundSubMenu);
     }    
@@ -41,7 +47,7 @@ DoSearch= function(searchQuery) {
 SearchQueryChange= function() {
     if (searchQuery!= $("#searchInput").val()) {
         searchQuery= $("#searchInput").val();        
-        DoSearch(searchQuery.toLowerCase());        
+        DoSearch(searchQuery.toLowerCase().trim());
     }    
 }
 
@@ -60,6 +66,6 @@ $.get("/assets/js/games.json", {}, function(data, response) {
             GAMEs.push(item);
         });
     } catch (e) {}    
-    console.log("GAMEs", GAMEs);
+    // console.log("GAMEs", GAMEs);
 });
 setInterval(SearchQueryChange, 500);
